@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "target": "ES6",                        // Compile to ES6 for modern JS support
+      "module": "CommonJS",                    // Use CommonJS for Node.js compatibility
+      "outDir": "./dist",                      // Output compiled files to "dist" folder
+      "rootDir": "./src",                      // Source TypeScript files are inside "src"
+      "strict": true,                          // Enable strict type checking
+      "esModuleInterop": true,                 // Allow importing ES6 modules like "import fs from 'fs';"
+      "forceConsistentCasingInFileNames": true,// Enforce case-sensitive file names
+      "skipLibCheck": true                      // Skip checking declaration files for performance
+    },
+    "include": ["src"],                         // Compile only files inside "src"
+    "exclude": ["node_modules", "dist"]         // Exclude unnecessary folders
+  }
+  
