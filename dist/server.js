@@ -175,7 +175,9 @@ fastify.get(MEDIA_URL, (req, res) => __awaiter(void 0, void 0, void 0, function*
             console.log(`✅ Returning cached image: ${processedFilePath}`);
         }
         catch (error) {
+            // Sometimse some issues with the cache 
             if (yield fs_extra_1.default.exists(processedFilePath)) {
+                fileExistsCache[processedFilePath] = true;
                 processedImageBuffer = yield fs_extra_1.default.readFile(processedFilePath);
             }
             else {
@@ -184,7 +186,7 @@ fastify.get(MEDIA_URL, (req, res) => __awaiter(void 0, void 0, void 0, function*
         }
         return res.type(`image/${format}`).send(processedImageBuffer);
     }
-    // ✅ Handle Local File Processing
+    // Handle Local File Processing
     if (isLocalFile) {
         if (!(yield fs_extra_1.default.exists(originalFilePath))) {
             res.header("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
